@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<select id="province" onchange="func(this)"></select>
+		<select id="city"></select>
+	</body>
+	<script>
+		data = {"广东省":["广州","佛山"],"四川省":["成都","广安"], "海南省":["三亚","海口"]};
+		var pro=document.getElementById("province");
+		var city=document.getElementById("city");
+		for(var i in data){
+			var option_pro=document.createElement("option");
+			option_pro.innerText=i;
+			pro.appendChild(option_pro);
+		}
+		function func(self){
+			var choice=(self.options[self.selectedIndex]).innerHTML;
+			console.log(choice);
+			city.options.length=0;
+			for(var i in data[choice]){
+				var option_city=document.createElement("option");
+				option_city.innerHTML=data[choice][i];
+				city.appendChild(option_city);
+			};
+		}
+	</script>
+</html>
